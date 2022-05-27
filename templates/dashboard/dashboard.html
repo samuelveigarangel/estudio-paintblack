@@ -47,8 +47,8 @@
             {% for funcionario in object_list %}
             <tr>
               <td>{{funcionario.funcionario__username}}</td>
-              <td>{{funcionario.total_servico}}</td>
-              <td>R$: {{funcionario.preco_total}}</td>
+              <td>{{funcionario.total_servico }}</td>
+              <td>R$: {% widthratio funcionario.preco_total 2 1 %}</td>
             </tr>
             {% endfor %}
           </tbody>
