@@ -52,9 +52,9 @@ def totalestudiomes(request):
             valor.append(float(x))
 
     valor_total = (sum(valor)/2)
-    #locale.setlocale(locale.LC_ALL, "Portuguese_Brazil.1252")
-    valor_total_formato_brasil = locale.currency(valor_total, grouping=True)
-    data = {'valor_mes': valor_total_formato_brasil}
+    locale.setlocale(locale.LC_ALL, "pt_BR.UTF-8")
+    
+    data = {'valor_mes': locale.setlocale(locale.LC_ALL, "pt_BR.UTF-8")}
 
     return JsonResponse(data)
 
