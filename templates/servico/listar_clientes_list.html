@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+  <ul>
+    <div class='table-responsive'>
+      <div class="container">
+          <hr>
+            <form action="?" method="GET">
+            <input type="text" placeholder="Buscar Cliente" name="pesquisa" id="" value="{{ request.GET.pesquisa }}"></input>
+            <button type="submit" class="btn btn-primary">OK</button>
+            </form>
+
+          <table class='table table-striped'>
+            <tr>
+                <th>Nome do cliente</th>
+                <th>Opções</th>
+            </tr>
+
+            {% for cliente in object_list %}
+                <tr>
+                    <td ><a href="{{ cliente.get_absolute_url }}">{{ cliente.nome_cliente }}</a></td>
+                    <td><a href="{% url 'servico:criar-servico' cliente.pk %}" class="btn btn-secondary btn-sm">Serviço</a>
+                        <a href="{% url 'servico:listar-servico' cliente.nome_cliente %}" class="btn btn-secondary btn-sm">Editar</a>
+                        <a href="{% url 'servico:historico-cliente' cliente.nome_cliente %}" class="btn btn-secondary btn-sm">Histórico</a>
+                    </td>
+                </tr>
+            {% empty %}
+             <tr>
+                    <td colspan='2'>Sem clientes cadastrados.</td>
+             </tr>
+            {% endfor %}
+          </table>
+         </hr>
+             <p><a class="btn btn-outline-primary" href="{% url 'pages:home' %}">Voltar</a></p>
+
+            <!-----------PAginatior------------>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-sm">
+                {% if page_obj.has_previous %}
+                 <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+                {% endif %}
+
+                {% for i in page_obj.paginator.page_range %}
+                 {% if page_obj.has_next %}
+                      {% if page_obj.number == i %}
+                        <li class="page-item disabled"><a class="page-link" href="#">{{ i }} </a></li>
+                      {% else %}
+                        <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                 {% endif %}
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                  <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Próximo</a></li>
+                {% endif %}
+              </ul>
+            </nav>
+
+      </div>
+    </div>
+  </ul>
+
+
+{% else %}
+    <p>Você não está logado</p>
+    <a href="{% url 'login' %}">Entrar</a>
+{% endif %}
+
+{% endblock %}

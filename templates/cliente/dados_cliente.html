@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<div class="container">
+    <div class="col-8 offset-2">
+      <div class="card">
+        <div class="card-header">
+          <div class="text-center">
+            <h4>Dados do cliente</h4>
+          </div>
+        </div>
+         <div class="table-responsive">
+            <div class="card-body">
+              <div class="row">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Nome Completo</td>
+                      <td>{{object.nome_cliente}}</td>
+                    </tr>
+                    <tr>
+                      <td>Telefone</td>
+                      <td>{{object.telefone}}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td>{{object.email}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+         </div>
+      </div>
+    </div>
+</div>
+
+{% else %}
+<p>Você não está logado</p>
+<a href="{% url 'login' %}">Entrar</a>
+{% endif %}
+{% endblock%}

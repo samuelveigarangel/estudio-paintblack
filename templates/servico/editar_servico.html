@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content%}
+   {% if user.is_authenticated %}
+    <div class="container">
+        <form method="post">
+
+            {% csrf_token %}
+            <h4>Cliente:   {{servico.cliente}}</h4>
+            {{ form|crispy }}
+            <a class="btn btn-outline-primary" href="{% url 'servico:listar-clientes' %}">Voltar</a>
+            <button type="submit" class="btn btn-success">Salvar</button>
+        </form>
+   </div>
+
+   {% else %}
+       <p>Você não está logado</p>
+       <a href="{% url 'login' %}">Entrar</a>
+
+   {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<link rel="stylesheet" href="{% static 'css/dados_estudio.css' %}">
+<div class='container'>
+
+        <div class="row">
+            <div class="col-md"><p class="text-center">Faturamento estúdio</p></div>
+            <div class="col-md"><p class="text-center">Cortes de cabelo</p></div>
+            <div class="col-md"><p class="text-center">Tatuagens</p></div>
+        </div>
+        <div class="row">
+                <div class="col-md info_basic">
+                <h1><span id='valor_mes'></span></h1>
+            </div>
+
+            <div class="col-md info_basic">
+                <h1><span id='total-cortes'></span></h1>
+            </div>
+
+            <div class="col-md info_basic">
+                <h1><span id='total-tatuagens'></span></h1>
+            </div>
+
+
+        </div>
+
+    <div class="row">
+        <div  style="width: 100%;">
+            <hr><canvas id="faturamento-mes"  data-url="{% url 'dashboard:dashboard-cliente' %}"></canvas></hr>
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 50px;">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Funcionário</th>
+              <th scope="col">Total de serviços</th>
+              <th scope="col">Pagamento</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for funcionario in object_list %}
+            <tr>
+              <td>{{funcionario.funcionario__username}}</td>
+              <td>{{funcionario.total_servico}}</td>
+              <td>R$: {{funcionario.preco_total}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div>
+{% else %}
+    <p>Você não está logado</p>
+    <a href="{% url 'login' %}">Entrar</a>
+{% endif %}
+</div>
+
+
+
+<!--Script para grafico faturamento mes-ano-->
+<script>
+    $(function () {
+      var $populationChart = $("#faturamento-mes");
+      $.ajax({
+        url: $populationChart.data("url"),
+        success: function (data) {
+
+
+        const backgroundcolor = []
+
+
+        for(i=0; i < data.data.length; i++){
+            if (data.data[i] < 2000){backgroundcolor.push('rgb(120, 0, 0)')
+            }else if (data.data[i] >= 2000){backgroundcolor.push('rgb(33,94,33)')
+            }
+        }
+
+          var ctx = $populationChart[0].getContext("2d");
+
+          const config = {
+           type: 'bar',
+           data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Faturamento',
+                backgroundColor: backgroundcolor,
+                fill: false,
+                data: data.data,
+                tension: 0.1,
+              }]
+            },
+            options: {
+              responsive: true,
+              legend: {
+                display: false,
+                position: 'top',
+                labels: {
+                  generateLabels: chart => {
+                    return [{
+                      datasetIndex: 0,
+                      text: '',
+                      fillStyle: 'white',
+                    }];
+                  }
+                }
+              },
+              title: {
+                display: true,
+                text: 'Faturamento por mês'
+              },
+              scales:{
+                yAxes:[{
+                       display: true,
+                       ticks: {
+                       beginAtZero: true,
+                       }
+                  }]
+              },
+              animation: {
+                onComplete : function() {
+                    var chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, Chart.defaults.global.defaultFontStyle, Chart.defaults.global.defaultFontFamily);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    ctx.fillStyle = 'rgb(0, 0, 0)';
+
+                    this.data.datasets.forEach(function(dataset, i) {
+                        var meta = chartInstance.controller.getDatasetMeta(i);
+                        meta.data.forEach(function(bar, index) {
+                            if (dataset.data[index] > 0) {
+                                var data = dataset.data[index];
+                                ctx.fillText('R$'+ data, bar._model.x, bar._model.y);
+                            }
+                        });
+                    });
+                }
+              }
+            }
+          }
+         const myChart = new Chart(ctx, config);
+
+        }
+      });
+
+    });
+
+
+
+</script>
+
+<!--Script para mostrar total vendas-->
+<script src="{% static 'js/total_servicos_mes.js' %}"></script>
+<script src="{% static 'js/total_mes.js' %}"></script>
+<script>
+ window.onload = function(e){
+    total_cortes_tatuagens('{% url "dashboard:dashboard-cortes-tatuagens" %}')
+    total_valor_mes('{% url "dashboard:dashboard-total-mes" %}')
+}
+</script>
+
+{% endblock %}

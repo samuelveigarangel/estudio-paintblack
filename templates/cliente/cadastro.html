@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Cadastro{% endblock %}
+{% load static %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+
+
+    <div class='container'>
+        <form method='POST' action=''>
+            <div class='form-group'>
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+            <a style="margin-top: 20px;" class="btn btn-outline-primary" href="{% url 'pages:home' %}">Voltar</a>
+            <button style="margin-top: 20px;" type="submit" class="btn btn-success">Cadastrar</button>
+
+            </div>
+
+        </form>
+    </div>
+{% else %}
+  <p>Você não está logado</p>
+  <a href="{% url 'login' %}">Entrar</a>
+{% endif %}
+{% endblock %}

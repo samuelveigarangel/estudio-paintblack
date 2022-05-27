@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +40,14 @@ INSTALLED_APPS = [
 
     #Meus apps
     'users.apps.UsersConfig',
+    'pages.apps.PagesConfig',
+    'clientes.apps.ClientesConfig',
+    'servico.apps.ServicoConfig',
+    "dashboard.apps.DashboardConfig",
+
+    #Apps terceiros
+    'tempus_dominus',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +65,7 @@ ROOT_URLCONF = 'setup.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -119,6 +127,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -128,3 +140,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #User Model
 
 AUTH_USER_MODEL = 'users.User'
+
+#Login redirect
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+
+#Tempus Dominus
+TEMPUS_DOMINUS_LOCALIZE = True
+
+#django-crispy-forms
+CRISPY_TEMPLATE_PACK = "bootstrap4"
