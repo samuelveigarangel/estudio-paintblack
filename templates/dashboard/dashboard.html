@@ -11,31 +11,30 @@
             <div class="col-md"><p class="text-center">Cortes de cabelo</p></div>
             <div class="col-md"><p class="text-center">Tatuagens</p></div>
         </div>
+        
         <div class="row">
-                <div class="col-md info_basic">
+                <div class="col-md shadow">
                 <h1><span id='valor_mes'></span></h1>
             </div>
 
-            <div class="col-md info_basic">
+            <div class="col-md shadow">
                 <h1><span id='total-cortes'></span></h1>
             </div>
 
-            <div class="col-md info_basic">
+            <div class="col-md shadow">
                 <h1><span id='total-tatuagens'></span></h1>
             </div>
-
-
         </div>
 
     <div class="row">
-        <div  style="width: 100%;">
+        <div  style="width: 99%;" class="shadow-charts">
             <hr><canvas id="faturamento-mes"  data-url="{% url 'dashboard:dashboard-cliente' %}"></canvas></hr>
         </div>
     </div>
 
 
-    <div class="row" style="margin-top: 50px;">
-        <table class="table table-striped">
+    <div class="row" style="margin-top: 40px;">
+        <table class="table table-striped shadow-charts">
           <thead>
             <tr>
               <th scope="col">Funcionário</th>
