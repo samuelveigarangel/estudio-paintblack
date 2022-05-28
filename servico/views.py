@@ -37,9 +37,9 @@ class AssociarServicoDetail(CreateView):
         return context
 
     def form_valid(self, form):
-        valor_servico = form.cleaned_data['valor_servico']
+        '''valor_servico = form.cleaned_data['valor_servico']
         if form.cleaned_data['modo_pagamento']:
-            form.instance.valor_servico = int(valor_servico)*0.966
+            form.instance.valor_servico = int(valor_servico)*0.966'''
         form.instance.cliente_id = self.kwargs['pk']
         return super().form_valid(form)
 
