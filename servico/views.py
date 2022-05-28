@@ -17,9 +17,9 @@ class ProcurarClienteList(ListView):
 
 
         if txt_pesquisa:
-            cliente = Cliente.objects.filter(nome_cliente__icontains=txt_pesquisa.strip()).order_by('-nome_cliente')
+            cliente = Cliente.objects.filter(nome_cliente__icontains=txt_pesquisa.strip()).order_by('nome_cliente')
         else:
-            cliente = Cliente.objects.all().order_by('-nome_cliente')
+            cliente = Cliente.objects.all().order_by('nome_cliente')
 
         return cliente
 
