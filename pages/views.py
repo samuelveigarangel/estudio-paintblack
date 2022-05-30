@@ -10,7 +10,7 @@ class TaskList(ListView):
     template_name = 'home.html'
 
     def get_queryset(self):
-        data_pesquisa = self.request.GET.get('filtro')
+        data_pesquisa = self.request.GET.get('Agenda')
 
         if data_pesquisa:
             # Transformar data em formato americano

@@ -30,10 +30,10 @@
                 <ul class="navbar-nav">
                    {% if user.is_authenticated %}
                   <li class="nav-item active">
-                    <a class="nav-link" href="{% url 'clientes:cadastro' %}">Cadastrar clientes</a>
+                    <a class="nav-link" href="{% url 'clientes:cadastro' %}">Cadastro</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="{% url 'servico:listar-clientes' %}">Clientes</a>
+                    <a class="nav-link" href="{% url 'servico:listar-clientes' %}">Cliente</a>
                   <li class="nav-item">
                     <a class="nav-link" href="{% url 'dashboard:dashboard' %}">Dashboard</a>
                   </li>
