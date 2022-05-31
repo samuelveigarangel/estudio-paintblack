@@ -29,7 +29,7 @@
             <!---------Paginação------------>
 
                 <nav aria-label="Page navigation example">
-                  <ul class="pagination pagination-sm">
+                  <ul class="pagination pagination-sm" style="display: flex; justify-content: center;">
                     {% if page_obj.has_previous %}
                      <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
                     {% endif %}
