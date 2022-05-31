@@ -87,8 +87,9 @@ class HistoricoCliente(ListView):
 def ExcluirServico(request, pk):
     """Função que recebe o id do serviço e exclui."""
     servicos = get_object_or_404(Servico, pk=pk)
+    parm_cliente = servicos.cliente
     servicos.delete()
-    return redirect('pages:home')
+    return redirect('servico:listar-servico', parm_cliente)
 
 
 '''def ExcluiCliente(request, pk):

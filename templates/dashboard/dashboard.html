@@ -45,7 +45,7 @@
           <tbody>
             {% for funcionario in object_list %}
             <tr>
-              <td>{{funcionario.funcionario__username}}</td>
+              <td>{{funcionario.refferring_funcionario__nome_funcionario}}</td>
               <td>{{funcionario.total_servico }}</td>
               <td>R$: {% widthratio funcionario.preco_total 2 1 %}</td>
             </tr>

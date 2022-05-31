@@ -7,7 +7,7 @@
         <form action="" method="POST">
             <h4>Cliente:  {{ cliente.nome_cliente }}</h4>
             {% csrf_token %}
-            {{form|crispy}}
+            {{ form|crispy }}
             <a class="btn btn-outline-primary" href="{% url 'servico:listar-clientes' %}">Voltar</a>
             <button type="submit" class="btn btn-success">Salvar</button>
         </form>

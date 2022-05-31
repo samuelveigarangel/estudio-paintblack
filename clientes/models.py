@@ -15,3 +15,11 @@ class Cliente(models.Model):
 
     def get_absolute_url(self):
         return reverse('clientes:dados-cliente', kwargs={'pk': self.pk})
+
+
+class Funcionario(models.Model):
+    nome_funcionario = models.CharField(max_length=70)
+    cargo_funcionario = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.nome_funcionario

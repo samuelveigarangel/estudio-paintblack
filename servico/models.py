@@ -2,14 +2,14 @@ from django.db import models
 from users.models import User
 from django.urls import reverse
 
-from clientes.models import Cliente
+from clientes.models import Cliente, Funcionario
 
 
 class Servico(models.Model):
 
     choices_services = [('1', 'Tatuagem'), ('2', 'Corte de Cabelo')]
 
-    funcionario = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Funcionário')
+    refferring_funcionario = models.ForeignKey(Funcionario, on_delete=models.CASCADE, verbose_name='Funcionário')
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     lista_servico = models.CharField(max_length=1, choices=choices_services, blank=False, null=False, verbose_name='Lista de serviços')
     valor_servico = models.DecimalField(default='', max_digits=7, decimal_places=2, verbose_name='Valor do serviço')

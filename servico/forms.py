@@ -9,7 +9,7 @@ class ServicoForms(forms.ModelForm):
 
     class Meta:
         model = Servico
-        fields = ['funcionario', 'lista_servico', 'valor_servico', 'data_servico', 'marcar_servico']
+        fields = ['refferring_funcionario', 'lista_servico', 'valor_servico', 'data_servico', 'marcar_servico']
 
         widgets = {'data_servico': DateTimePicker(options={'minDate': datetime.today().strftime('%m-%d-%Y')}),
                  }
@@ -19,6 +19,6 @@ class EditarServicoForms(forms.ModelForm):
 
     class Meta:
         model = Servico
-        fields = ['funcionario', 'lista_servico', 'valor_servico', 'data_servico', 'marcar_servico']
+        fields = ['refferring_funcionario', 'lista_servico', 'valor_servico', 'data_servico', 'marcar_servico']
 
         widgets={'data_servico': DateTimePicker()}

@@ -67,7 +67,7 @@ class TotalFuncionarioList(ListView):
     model = Servico
 
     def get_queryset(self):
-        queryset = Servico.objects.values('funcionario__username').annotate(preco_total=Sum('valor_servico')).annotate(total_servico=Count('lista_servico')).order_by('funcionario__username').filter(
+        queryset = Servico.objects.values('refferring_funcionario__nome_funcionario').annotate(preco_total=Sum('valor_servico')).annotate(total_servico=Count('lista_servico')).order_by('refferring_funcionario__nome_funcionario').filter(
         (Q(data_servico__month=date.today().month) & Q(marcar_servico=True) & Q(data_servico__year=date.today().year)))
         print(queryset)
         return queryset
