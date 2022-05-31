@@ -8,6 +8,7 @@ from .forms import ServicoForms, EditarServicoForms
 
 
 class ProcurarClienteList(ListView):
+    """Class que herda ListView e retorna os clientes cadastrados."""
     model = Cliente
     template_name = 'servico/listar_clientes_list.html'
     paginate_by = 10
@@ -25,6 +26,9 @@ class ProcurarClienteList(ListView):
 
 
 class AssociarServicoDetail(CreateView):
+    """Class que herda CreateView e cria um formulário para associar um serviço a determinado cliente.
+    Ex: Associar um corte de cabelo ou tatuagem para cliente X.
+    """
     model = Cliente
     template_name = 'servico/criar_servico_detail.html'
     form_class = ServicoForms
@@ -44,7 +48,20 @@ class AssociarServicoDetail(CreateView):
         return super().form_valid(form)
 
 
+class ListarServico(ListView):
+    """Class que recebe ListView responsável por listar todos os servicos associados a determinado cliente.
+    """
+    model = Servico
+    template_name = 'servico/listar_servicos.html'
+    paginate_by = 10
+
+    def get_queryset(self):
+        servicos = Servico.objects.filter(cliente__nome_cliente=self.kwargs.get('cliente')).order_by('data_servico')
+        return servicos
+
+
 class EditarServico(UpdateView):
+    """Class que herda UpdateView e edita os serviços associados a determinado cliente."""
     login_url = 'pages:home'
     form_class = EditarServicoForms
     template_name = 'servico/editar_servico.html'
@@ -56,20 +73,8 @@ class EditarServico(UpdateView):
         return obj
 
 
-class ListarServico(ListView):
-    """Classe responsável por listar todos os servicos associados a determinado cliente
-    :param Recebe Class ListView
-    """
-    model = Servico
-    template_name = 'servico/listar_servicos.html'
-    paginate_by = 10
-
-    def get_queryset(self):
-        servicos = Servico.objects.filter(cliente__nome_cliente=self.kwargs.get('cliente')).order_by('data_servico')
-        return servicos
-
-
 class HistoricoCliente(ListView):
+    """Class que herda Listview e lista todos os serviços associado a determinado cliente."""
     model = Servico
     template_name = 'servico/historico_cliente.html'
     paginate_by = 6
@@ -80,6 +85,7 @@ class HistoricoCliente(ListView):
 
 
 def ExcluirServico(request, pk):
+    """Função que recebe o id do serviço e exclui."""
     servicos = get_object_or_404(Servico, pk=pk)
     servicos.delete()
     return redirect('pages:home')

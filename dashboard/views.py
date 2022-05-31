@@ -13,6 +13,7 @@ def dashboard(request):
 
 
 def faturamentomes(request):
+    """Função que retorna um Json o faturamento de cada mês no ano"""
     labels = ['Janeiro', 'fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
     data = [None] * 12
 
@@ -33,7 +34,7 @@ def faturamentomes(request):
 
 
 def clienteatendidosmes(request):
-
+    """Função que retorna  um Json com o total de atedimento de corte de cabelo e tatuagem"""
     total_cabelo = len(Servico.objects.filter((Q(data_servico__month=date.today().month) & Q(marcar_servico=True) & Q(lista_servico=2) & Q(data_servico__year=date.today().year))))
     total_tatuagem = len(Servico.objects.filter((Q(data_servico__month=date.today().month) & Q(marcar_servico=True) & Q(lista_servico=1))))
     data = {'total_cabelo': total_cabelo,
@@ -43,6 +44,7 @@ def clienteatendidosmes(request):
 
 
 def totalestudiomes(request):
+    """Funçao que retornar um Json com o total de faturamento do estúdio do mês"""
     valor = []
     queryset = list(Servico.objects.values_list('valor_servico', flat=True).filter(
         (Q(data_servico__month=date.today().month) & Q(marcar_servico=True) & Q(data_servico__year=date.today().year))))
@@ -60,6 +62,7 @@ def totalestudiomes(request):
 
 
 class TotalFuncionarioList(ListView):
+    """Função que retorna um QuerySet com o pagamento de cada funcionário no mês"""
     template_name = 'dashboard/dashboard.html'
     model = Servico
 

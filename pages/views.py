@@ -7,6 +7,7 @@ from servico.models import Servico
 
 
 class TaskList(ListView):
+    """Class que herda ListView e retorna as TaskLists do dia especificado"""
     template_name = 'home.html'
 
     def get_queryset(self):
