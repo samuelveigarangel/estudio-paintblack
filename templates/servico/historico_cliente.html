@@ -14,7 +14,7 @@
                    </tr>
                    {% for servico in object_list %}
                    <tr>
-                            <td>{{ servico.funcionario }}</td>
+                            <td>{{ servico.refferring_funcionario }}</td>
                             <td>{{ servico.get_lista_servico_display }}</td>
                             <td>{{ servico.data_servico }}</td>
                             <td>R$ {{ servico.valor_servico }}</td>

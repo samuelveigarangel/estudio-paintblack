@@ -30,7 +30,7 @@ class AssociarServicoDetail(CreateView):
     Ex: Associar um corte de cabelo ou tatuagem para cliente X.
     """
     model = Cliente
-    template_name = 'servico/criar_servico_detail.html'
+    template_name = 'servico/criar_servico_ou_editar_detail.html'
     form_class = ServicoForms
     success_url = reverse_lazy('servico:listar-clientes')
 
@@ -64,7 +64,7 @@ class EditarServico(UpdateView):
     """Class que herda UpdateView e edita os serviços associados a determinado cliente."""
     login_url = 'pages:home'
     form_class = EditarServicoForms
-    template_name = 'servico/editar_servico.html'
+    template_name = 'servico/criar_servico_ou_editar_detail.html'
     success_url = reverse_lazy('servico:listar-clientes')
 
     def get_object(self, queryset=None):
