@@ -1,5 +1,5 @@
 # Sistema de gestão e agendamento (Estúdio de Tatuagem e Barbearia)
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/samuelveigarangel/estudio-paintblack/blob/main/LICENSE)
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/samuelveigarangel/estudio-paintblack/blob/master/LICENSE)
 
 ## Index
 * [Sobre o projeto](#sobre-o-projeto)
