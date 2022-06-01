@@ -40,7 +40,7 @@ Tela que criar um novo serviço para o cliente. Há opções de você escolher o
 
 ![criar-servico](https://user-images.githubusercontent.com/82840278/171342608-9f50784b-be84-4f92-b3ad-5c66fb920c60.PNG)
 ## Editar
-Lista todos os serviços realizados e agendados do cliente com opções de editar e excluir. A opção editar criar um mesmo layout do criar serviço com os campos editáveis.
+Lista todos os serviços realizados e agendados do cliente com opções de editar e excluir. A opção editar criar um mesmo layout do criar serviço com os campos editáveis. Se selecionado opção excluir, aparecerá uma windows.confirm para confirmação de exclusão.
 
 ![list-servicos](https://user-images.githubusercontent.com/82840278/171343053-814b3bb3-530d-4fee-bc3d-59d4080484f2.PNG)
 ## Histórico
