@@ -37,17 +37,19 @@
                             <li class="d-flex justify-content-between">
                                 <div class="d-flex flex-row align-items-center">
                                     <div class="ml-2">
+                                        
                                         <h6 class="mb-2"><a href="{{ cliente.get_absolute_url }}">{{ cliente.cliente }}</a></h6>
                                             <ul>Funcionário: {{ cliente.refferring_funcionario }}</ul>
                                         <div class="d-flex flex-row mt-1 text-black-50 date-time">
                                             <div><i class="fa fa-calendar-o"></i><span class="ml-2">{{ cliente.data_servico }}</span></div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                {% endfor %}
+                    {% endfor %}
                 {% else %}
                 <div class="mt-3">
                     <ul class="list list-inline">

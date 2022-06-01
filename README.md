@@ -1,7 +1,7 @@
 # Sistema de gestão e agendamento (Estúdio de Tatuagem e Barbearia)
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/samuelveigarangel/estudio-paintblack/blob/main/LICENSE)
 
-<h1 align="center">Apêndice</h1>
+<h1 align="center">Sobre o projeto</h1>
 
 <p align="center">
  <a href="#sobre-o-projeto">Sobre</a> •
@@ -11,12 +11,25 @@
 </p>
 
 
+## Index
+* [Sobre o projeto](#sobre-o-projeto)
+    * [Entrar](#entrar)
+* [Tecnologias Usadas](#tecnologias-usadas)
+* [Implantação em produção](#implantação-em-produção)
+* [Como executar o projeto](#como-executar-o-projeto)
+
+
+# Página inicial
+# Cadastro 
+# Cliente
+# Dashboard
 # Sobre o projeto
 
 Com o intuíto de melhorar a gestão de um estúdio de tatuagem e barbearia, foi desenvolvido uma aplicação 
 que realiza o cadastro de novos clientes e o agendamento de serviços de tatuagem e corte de cabelo. Além 
 disso, aplicação é composta por um dashboard com informações de pagamento individual de funcionários, 
 faturamento e quantidade de atendimentos no mês.
+
 
 
 # Tecnologias Usadas
