@@ -48,7 +48,7 @@ Mostra todos os serviços realizados e agendados do cliente.
 
 ![historico](https://user-images.githubusercontent.com/82840278/171343109-8a3b7e90-7b14-4d23-be89-4273b70251aa.PNG)
 # Dashboard
-Painel visual que apresenta informações gerais sobre o estúdio. Quantidade de tatuagens e cortes de cabelo no mês, faturamento de todos os meses do ano, pagamento de cada funcionário e o lucro do mês do estúdio. 
+Painel visual que apresenta informações gerais sobre o estúdio. Quantidade de tatuagens e cortes de cabelo no mês, faturamento de todos os meses do ano, pagamento de cada funcionário e o lucro. 
 Para o gráfico do faturamento, foi utilizado biblioteca Chart.js. Se o faturamento do mês ficar abaixo de 2 mil reais, a barra ficará vermelha, acima disso, verde.
 
 ![dashboard](https://user-images.githubusercontent.com/82840278/171343148-6a34c546-cf1d-4dda-9a62-c002b8ad67ba.PNG)
